@@ -5,23 +5,24 @@
   <title>Sludinājumu analizators</title>
   <style>
     body { font-family: Arial; margin: 20px; }
-    button { padding: 10px 20px; }
+    button { padding: 10px 20px; cursor: pointer; }
     table { border-collapse: collapse; width: 100%; margin-top: 20px; }
     th, td { border: 1px solid #ccc; padding: 8px; }
   </style>
 </head>
 <body>
-  <h1>Sludinājumu analizators</h1>
+  <h1>Sludinājumu analizators no ss.com</h1>
   <button onclick="analyze()">Analizēt sludinājumus</button>
   <div id="results"></div>
 
   <script>
     async function analyze() {
-      document.getElementById('results').innerHTML = 'Ielādē...';
+      document.getElementById('results').innerHTML = 'Ielādē datus...';
       const resp = await fetch('/analyze', { method: 'POST' });
       const data = await resp.json();
+
       if (data.error) {
-        document.getElementById('results').innerHTML = 'Kļūda: ' + data.error;
+        document.getElementById('results').innerHTML = '❌ Kļūda: ' + data.error;
         return;
       }
 
@@ -31,7 +32,7 @@
           <td>${l.title}</td>
           <td>${l.location}</td>
           <td>${l.price}</td>
-          <td>${l.phone || 'nav pieejams'}</td>
+          <td>${l.phone || '—'}</td>
         </tr>
       `).join('');
 
