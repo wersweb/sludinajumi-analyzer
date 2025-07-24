@@ -10,7 +10,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.post('/analyze', async (req, res) => {
   try {
-    const response = await axios.get('https://www.ss.com/lv/real-estate/flats/riga/center/', {
+    const response = await axios.get('https://www.ss.com/lv/real-estate/flats/riga/centre/', {
       headers: {
         'User-Agent': 'Mozilla/5.0',
         'Accept-Language': 'lv,en;q=0.9',
